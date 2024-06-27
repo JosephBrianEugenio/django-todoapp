@@ -3,8 +3,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from mytodoapp.models.task_model import Task
 from mytodoapp.api.version.v1.task.delete_task.serializers.delete_task_serializers import DeleteTaskSerializer
-
+from rest_framework.permissions import IsAuthenticated
 class DeleteTaskAPI(APIView):
+    permission_classes = [IsAuthenticated]
     def delete(self, request, *args, **kwargs):
         data = {}
         status = None
